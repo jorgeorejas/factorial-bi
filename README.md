@@ -47,7 +47,7 @@ Once you deliver the challenge, we’ll schedule a second meeting with the rest 
 
 ## The Implementation
 
-The implementation consist on a dashboard that allows to visualize the sales of the company, and it shows the value of the sales across time, and also the number of clients across time.
+The implementation consist on a dashboard that allows to visualize the sales of the company, and it shows the value of the sales along time, and also the number of clients along time.
 
 It also shows the accumulated sales, the total clients and the total sales.
 
@@ -62,6 +62,8 @@ The implementation uses classes to manage the database and to process the inform
 It also has a `/utils/types.d.ts` where you can find the types I used for the data of the application.
 
 Currently it has no authentication, but it could be easily added using the Supabase Auth library or NextAuth, that's why the APIs are not protected, in a real world scenario they should be protected with a JWT token or similar.
+
+For the backend instead of using ExpressJS or a dedicated server, I decided to use NextJS API Routes, which are very easy to use and very fast to implement. I think it's a great solution for small projects like this one.
 
 ## Testing
 
