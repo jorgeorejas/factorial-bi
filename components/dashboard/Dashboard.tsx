@@ -64,165 +64,188 @@ export default function Dashboard({ data }: { data: DashboardData }) {
   }
   return (
     <>
-      <ColGrid
-        numColsSm={1}
-        numColsMd={1}
-        numColsLg={3}
-        gapX="gap-x-6"
-        gapY="gap-y-6"
-        marginTop="mt-6"
-      >
-        <div>
-          <Title>Dashboard</Title>
-          <Text marginTop="mt-4">
-            Ipsum in sit deserunt nostrud quis. Qui anim sunt deserunt enim
-            nostrud sint ipsum proident eu eiusmod exercitation magna nisi. Sint
-            est non veniam ut.
-          </Text>
-        </div>
-
-        <Card>
-          <Text>Select time intervals:</Text>
-          <SelectBox
-            defaultValue={"byDay"}
-            handleSelect={(value) => handleChange(value)}
-            placeholder="Select..."
-            maxWidth="max-w-none"
-            marginTop="mt-4"
-          >
-            <SelectBoxItem value={"byDay"} text="By Day" icon={undefined} />
-            <SelectBoxItem value={"byHour"} text="By Hour" icon={undefined} />
-            <SelectBoxItem
-              value={"byMinute"}
-              text="By Minute"
-              icon={undefined}
-            />
-          </SelectBox>
-        </Card>
-        <Card>
-          <Flex spaceX="space-x-6" alignItems="items-center">
-            <Icon
-              icon={Outline.ScaleIcon}
-              variant="light"
-              size="xl"
-              color={"gray"}
-            />
-            <Block spaceY="space-y-2">
-              <Text>Average Revenue {byWhat()}.</Text>
-              <Metric truncate={true}>{formatPrice(average.Average)}</Metric>
-            </Block>
-          </Flex>
-        </Card>
-      </ColGrid>
+      {DashboardHeader(handleChange, byWhat, formatPrice, average)}
 
       <Divider />
 
-      <ColGrid
-        numColsSm={1}
-        numColsMd={2}
-        numColsLg={3}
-        gapX="gap-x-6"
-        gapY="gap-y-6"
-        marginTop="mt-6"
-      >
-        <Card>
-          <Block textAlignment="text-center" spaceY="space-y-2">
-            <Icon
-              icon={Outline.PlusCircleIcon}
-              variant="light"
-              size="xl"
-              color={"red"}
-            />
+      {KPICards(data, formatPrice)}
 
-            <Text textAlignment="text-center">Total Sales</Text>
-            <Metric truncate={true}>{data.total}</Metric>
+      {Charts(formatPrice, data, graphData)}
+    </>
+  );
+}
+function DashboardHeader(
+  handleChange: (value: "byDay" | "byHour" | "byMinute") => void,
+  byWhat: () => "by day" | "by hour" | "by minute" | undefined,
+  formatPrice: (price: number) => string,
+  average: average
+) {
+  return (
+    <ColGrid
+      numColsSm={1}
+      numColsMd={1}
+      numColsLg={3}
+      gapX="gap-x-6"
+      gapY="gap-y-6"
+      marginTop="mt-6"
+    >
+      <div>
+        <Title>Dashboard</Title>
+        <Text marginTop="mt-4">
+          Ipsum in sit deserunt nostrud quis. Qui anim sunt deserunt enim
+          nostrud sint ipsum proident eu eiusmod exercitation magna nisi. Sint
+          est non veniam ut.
+        </Text>
+      </div>
+
+      <Card>
+        <Text>Select time intervals:</Text>
+        <SelectBox
+          defaultValue={"byDay"}
+          handleSelect={(value) => handleChange(value)}
+          placeholder="Select..."
+          maxWidth="max-w-none"
+          marginTop="mt-4"
+        >
+          <SelectBoxItem value={"byDay"} text="By Day" icon={undefined} />
+          <SelectBoxItem value={"byHour"} text="By Hour" icon={undefined} />
+          <SelectBoxItem value={"byMinute"} text="By Minute" icon={undefined} />
+        </SelectBox>
+      </Card>
+      <Card>
+        <Flex spaceX="space-x-6" alignItems="items-center">
+          <Icon
+            icon={Outline.ScaleIcon}
+            variant="light"
+            size="xl"
+            color={"gray"}
+          />
+          <Block spaceY="space-y-2">
+            <Text>Average Revenue {byWhat()}.</Text>
+            <Metric truncate={true}>{formatPrice(average.Average)}</Metric>
           </Block>
-        </Card>
-        <Card>
-          <Block textAlignment="text-center" spaceY="space-y-2">
-            <Icon
-              icon={Outline.CurrencyEuroIcon}
-              variant="light"
-              size="xl"
-              color={"green"}
-            />
+        </Flex>
+      </Card>
+    </ColGrid>
+  );
+}
 
-            <Text textAlignment="text-center">Accumulated Sales</Text>
+function KPICards(data: DashboardData, formatPrice: (price: number) => string) {
+  return (
+    <ColGrid
+      numColsSm={1}
+      numColsMd={2}
+      numColsLg={3}
+      gapX="gap-x-6"
+      gapY="gap-y-6"
+      marginTop="mt-6"
+    >
+      <Card>
+        <Block textAlignment="text-center" spaceY="space-y-2">
+          <Icon
+            icon={Outline.PlusCircleIcon}
+            variant="light"
+            size="xl"
+            color={"red"}
+          />
+
+          <Text textAlignment="text-center">Total Sales</Text>
+          <Metric truncate={true}>{data.total}</Metric>
+        </Block>
+      </Card>
+      <Card>
+        <Block textAlignment="text-center" spaceY="space-y-2">
+          <Icon
+            icon={Outline.CurrencyEuroIcon}
+            variant="light"
+            size="xl"
+            color={"green"}
+          />
+
+          <Text textAlignment="text-center">Accumulated Sales</Text>
+          <Metric truncate={true}>{formatPrice(data.accumulated)}</Metric>
+        </Block>
+      </Card>
+
+      <Card>
+        <Block textAlignment="text-center" spaceY="space-y-2">
+          <Icon
+            icon={Outline.UserGroupIcon}
+            variant="light"
+            size="xl"
+            color={"blue"}
+          />
+
+          <Text textAlignment="text-center">Total Clients</Text>
+          <Metric truncate={true}>{data.total}</Metric>
+        </Block>
+      </Card>
+    </ColGrid>
+  );
+}
+
+function Charts(
+  formatPrice: (price: number) => string,
+  data: DashboardData,
+  graphData: GraphData[]
+) {
+  return (
+    <Block marginTop="mt-6" spaceY="space-y-6">
+      <Card>
+        <Flex spaceX="space-x-6">
+          <Icon
+            icon={Outline.CurrencyEuroIcon}
+            variant="light"
+            size="xl"
+            color={"green"}
+          />
+          <Block>
+            <Text>Sales along time</Text>
             <Metric truncate={true}>{formatPrice(data.accumulated)}</Metric>
           </Block>
-        </Card>
-
-        <Card>
-          <Block textAlignment="text-center" spaceY="space-y-2">
-            <Icon
-              icon={Outline.UserGroupIcon}
-              variant="light"
-              size="xl"
-              color={"blue"}
-            />
-
-            <Text textAlignment="text-center">Total Clients</Text>
+        </Flex>
+        <AreaChart
+          marginTop="mt-8"
+          data={graphData}
+          categories={["Aggregated Revenue"]}
+          dataKey="time"
+          colors={["green"]}
+          showYAxis={true}
+          showAnimation={true}
+          showGradient={true}
+          showLegend={false}
+          showTooltip={true}
+          height="h-72"
+          valueFormatter={formatPrice}
+        />
+      </Card>
+      <Card>
+        <Flex spaceX="space-x-6">
+          <Icon
+            icon={Outline.UserGroupIcon}
+            variant="light"
+            size="xl"
+            color={"blue"}
+          />
+          <Block>
+            <Text>Clients along time</Text>
             <Metric truncate={true}>{data.total}</Metric>
           </Block>
-        </Card>
-      </ColGrid>
-
-      <Block marginTop="mt-6" spaceY="space-y-6">
-        <Card>
-          <Flex spaceX="space-x-6">
-            <Icon
-              icon={Outline.CurrencyEuroIcon}
-              variant="light"
-              size="xl"
-              color={"green"}
-            />
-            <Block>
-              <Text>Sales along time</Text>
-              <Metric truncate={true}>{formatPrice(data.accumulated)}</Metric>
-            </Block>
-          </Flex>
-          <AreaChart
-            marginTop="mt-8"
-            data={graphData}
-            categories={["Aggregated Revenue"]}
-            dataKey="time"
-            colors={["green"]}
-            showYAxis={true}
-            showAnimation={true}
-            showGradient={true}
-            showLegend={false}
-            showTooltip={true}
-            height="h-72"
-          />
-        </Card>
-        <Card>
-          <Flex spaceX="space-x-6">
-            <Icon
-              icon={Outline.UserGroupIcon}
-              variant="light"
-              size="xl"
-              color={"blue"}
-            />
-            <Block>
-              <Text>Clients along time</Text>
-              <Metric truncate={true}>{data.total}</Metric>
-            </Block>
-          </Flex>
-          <AreaChart
-            marginTop="mt-8"
-            data={graphData}
-            categories={["Total Clients"]}
-            dataKey="time"
-            colors={["blue"]}
-            showYAxis={true}
-            showAnimation={true}
-            showGradient={true}
-            showLegend={false}
-            showTooltip={true}
-            height="h-72"
-          />
-        </Card>
-      </Block>
-    </>
+        </Flex>
+        <AreaChart
+          marginTop="mt-8"
+          data={graphData}
+          categories={["Total Clients"]}
+          dataKey="time"
+          colors={["blue"]}
+          showYAxis={true}
+          showAnimation={true}
+          showGradient={true}
+          showLegend={false}
+          showTooltip={true}
+          height="h-72"
+        />
+      </Card>
+    </Block>
   );
 }

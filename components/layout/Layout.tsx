@@ -45,7 +45,7 @@ function Header({ selected }: { selected: "dashboard" | "manager" }) {
   }
 
   return (
-    <div className="flex justify-between">
+    <div className="justify-between space-y-2 md:flex">
       <div className="flex">
         <Link href="/">
           <a
