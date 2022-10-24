@@ -67,7 +67,7 @@ Those tests are:
 ## Usefull information
 
 - You should run yarn when you download the code to install the dependencies
-- You should create a .env file with the database information, it should be a PostgreSQL address.
+- You should create a .env file with the database information, it should be a PostgreSQL address, you can ask me for the db I used and I would send the .env
 - You would probably like to seed the database in order to visualize the information, thats why you should run `npx prisma db seed`
 - You would also find the application running at https://factorial-bi.jorgeorejas.com
 - For any other doubt I would be able to answer to it at the next interview.
