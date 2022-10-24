@@ -8,7 +8,12 @@ class DataBaseInteraction {
   }
 
   async getSales(): Promise<Sale[]> {
-    const sales = await this.prisma.sales.findMany();
+    const sales = await this.prisma.sales.findMany({
+      orderBy: {
+        date: "desc",
+      },
+    });
+
     return sales.map((sale) => {
       return {
         id: sale.id,

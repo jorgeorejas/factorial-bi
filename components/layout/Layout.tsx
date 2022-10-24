@@ -8,10 +8,11 @@ export default function Layout({
   children: any;
   selected: "dashboard" | "manager";
 }) {
+  let title = "Factorial BI | " + { selected };
   return (
     <>
       <Head>
-        <title>Factorial BI | {selected}</title>
+        <title>{title}</title>
         <meta name="description" content="Factorial BI" />
         <link rel="icon" href="/factorial.svg" />
       </Head>
