@@ -80,6 +80,7 @@ Those tests are:
 
 - You should run `yarn` when you download the code to install the dependencies
 - You should create a .env file with the database information, it should be a PostgreSQL address, you can ask me for the db I used and I would send the .env
-- You would probably like to seed the database in order to visualize the information, thats why you should run `npx prisma db seed`
+- You would probably like to seed the database in order to visualize the information, that's why you should run `npx prisma db seed`
 - You can also find the application running at https://factorial-bi.jorgeorejas.com
 - For any other doubt I would be able to answer to it at the next interview.
+- In the application, you can remove all the entries in the database by clicking on the "Remove All" button in the header of the application, and you can add a 100 randomly generated entries by clicking on the "Seed 100" button.
