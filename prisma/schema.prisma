@@ -10,10 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ARR{
-  id Int @id @default(autoincrement())
-  name String
-  value BigInt
+model Sales{
+  id String @id @default(cuid())
+  client String
+  value Int
   date DateTime @default(now())
-  tag String
 }
