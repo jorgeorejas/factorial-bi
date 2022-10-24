@@ -61,6 +61,8 @@ The implementation uses classes to manage the database and to process the inform
 
 It also has a `/utils/types.d.ts` where you can find the types I used for the data of the application.
 
+Currently it has no authentication, but it could be easily added using the Supabase Auth library or NextAuth, that's why the APIs are not protected, in a real world scenario they should be protected with a JWT token or similar.
+
 ## Testing
 
 For testing purpose as the generation of the data is random, I focused on testing the funcions I used for processing the data.
