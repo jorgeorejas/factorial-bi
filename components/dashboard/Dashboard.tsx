@@ -102,7 +102,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
         <Card>
           <Flex spaceX="space-x-6" alignItems="items-center">
             <Icon
-              icon={Outline.UserGroupIcon}
+              icon={Outline.ScaleIcon}
               variant="light"
               size="xl"
               color={"gray"}

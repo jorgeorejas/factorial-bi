@@ -12,6 +12,8 @@ export default function Layout({
     <>
       <Head>
         <title>Factorial BI | {selected}</title>
+        <meta name="description" content="Factorial BI" />
+        <link rel="icon" href="/factorial.svg" />
       </Head>
       <div className="p-4">
         <Header selected={selected} />
