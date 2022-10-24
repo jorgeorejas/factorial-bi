@@ -6,7 +6,7 @@
   - [The Stack](#the-stack)
   - [The Implementation](#the-implementation)
   - [Testing](#testing)
-  - [Usefull information](#usefull-information)
+  - [Useful information](#useful-information)
 
 # Factorial Growth Engineer Challenge
 
@@ -72,7 +72,7 @@ Those tests are:
 - [x] The Average of all the prices in the data array is correct
 - [x] The sum of all the prices for each day of sales is correct
 
-## Usefull information
+## Useful information
 
 - You should run yarn when you download the code to install the dependencies
 - You should create a .env file with the database information, it should be a PostgreSQL address, you can ask me for the db I used and I would send the .env
