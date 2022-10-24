@@ -1,3 +1,13 @@
+- [Factorial Growth Engineer Challenge](#factorial-growth-engineer-challenge)
+  - [🖥 Your Job](#-your-job)
+  - [💪 The Challenge](#-the-challenge)
+  - [✅ To evaluate](#-to-evaluate)
+- [My Implementation](#my-implementation)
+  - [The Stack](#the-stack)
+  - [The Implementation](#the-implementation)
+  - [Testing](#testing)
+  - [Usefull information](#usefull-information)
+
 # Factorial Growth Engineer Challenge
 
 The goal of the challenge is to evaluate your hard skills by providing a working code that can be presented to the rest of the team.
@@ -21,8 +31,6 @@ The maximum time for the challenge is 8 hours in the time frame we establish. Fe
 Once you deliver the challenge, we’ll schedule a second meeting with the rest of the team to evaluate your coding process, your ability to write clean code, and beautiful CSS (you can use preprocessors like Sass, Stylus, CSS-in-JS,..., or vanilla CSS), your ability to analyze and test your solution, and your capacity to prioritize the project and your decisions.
 
 ---
-
-
 
 # My Implementation
 
@@ -49,7 +57,7 @@ The Implementation also has a manage table, where you can add or remove new data
 
 The result page is mobile ready, and all the libraries are prepared to be responive, although due to the requirements of the data it should manage, it might be hard to update the database using a phone.
 
-The implementation uses classes to manage the database and to process the information, I decided to do so due to the cleaness of the code and the reusability. 
+The implementation uses classes to manage the database and to process the information, I decided to do so due to the cleaness of the code and the reusability.
 
 It also has a `/utils/types.d.ts` where you can find the types I used for the data of the application.
 
@@ -71,4 +79,3 @@ Those tests are:
 - You would probably like to seed the database in order to visualize the information, thats why you should run `npx prisma db seed`
 - You would also find the application running at https://factorial-bi.jorgeorejas.com
 - For any other doubt I would be able to answer to it at the next interview.
-
