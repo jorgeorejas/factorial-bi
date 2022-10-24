@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 
 export default function Layout({
@@ -5,16 +6,21 @@ export default function Layout({
   selected,
 }: {
   children: any;
-  selected: "dashboard" | "manage";
+  selected: "dashboard" | "manager";
 }) {
   return (
-    <div className="p-4">
-      <Header selected={selected} />
-      {children}
-    </div>
+    <>
+      <Head>
+        <title>Factorial BI | {selected}</title>
+      </Head>
+      <div className="p-4">
+        <Header selected={selected} />
+        {children}
+      </div>
+    </>
   );
 }
-function Header({ selected }: { selected: "dashboard" | "manage" }) {
+function Header({ selected }: { selected: "dashboard" | "manager" }) {
   return (
     <div className="flex">
       <Link href="/">
@@ -29,7 +35,7 @@ function Header({ selected }: { selected: "dashboard" | "manage" }) {
       <Link href="/manage">
         <a
           className={`${
-            selected == "manage" ? "underline" : ""
+            selected == "manager" ? "underline" : ""
           } p-2 rounded-t-lg outline-none`}
         >
           <h1>Manage data </h1>

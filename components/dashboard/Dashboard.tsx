@@ -161,7 +161,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
               color={"blue"}
             />
 
-            <Text textAlignment="text-center">Total Costumers</Text>
+            <Text textAlignment="text-center">Total Clients</Text>
             <Metric truncate={true}>{data.total}</Metric>
           </Block>
         </Card>

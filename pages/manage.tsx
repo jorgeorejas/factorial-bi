@@ -3,9 +3,11 @@ import * as UI from "../components";
 import DataBaseInteraction from "../utils/dbInteraction";
 import { InferGetServerSidePropsType } from "next";
 
-export default function Manage({ sales }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Manage({
+      sales,
+    }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <UI.Layout selected="manage">
+    <UI.Layout selected="manager">
       <Card marginTop="mt-4" hFull={true}>
         <UI.Table data={sales} />
       </Card>
