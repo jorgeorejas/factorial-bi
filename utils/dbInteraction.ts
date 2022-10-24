@@ -51,6 +51,11 @@ class DataBaseInteraction {
     });
     return sale;
   }
+
+  async removeAll() {
+    const sales = await this.prisma.sales.deleteMany({});
+    return sales;
+  }
 }
 
 export default DataBaseInteraction;

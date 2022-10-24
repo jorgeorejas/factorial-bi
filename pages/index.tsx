@@ -4,10 +4,11 @@ import * as UI from "../components";
 import DataProcessor from "../utils/dataProcessor";
 import DataBaseInteraction from "../utils/dbInteraction";
 import { InferGetServerSidePropsType } from "next";
+import dynamic from "next/dynamic";
 
-export default function Home({
-      sales,
-    }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function Home({
+  sales,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const processor = new DataProcessor(sales);
   const data: DashboardData = {
     total: processor.totalSales(),
@@ -33,7 +34,9 @@ export default function Home({
     </UI.Layout>
   );
 }
-
+export default dynamic(() => Promise.resolve(Home), {
+  ssr: false,
+});
 // we will get server side props from the api
 export async function getServerSideProps() {
   const db = new DataBaseInteraction();
