@@ -7,6 +7,7 @@
   - [The Implementation](#the-implementation)
   - [Testing](#testing)
   - [Useful information](#useful-information)
+  - [Possible improvements](#possible-improvements)
 
 # Factorial Growth Engineer Challenge
 
@@ -84,3 +85,11 @@ Those tests are:
 - You can also find the application running at https://factorial-bi.jorgeorejas.com
 - For any other doubt I would be able to answer to it at the next interview.
 - In the application, you can remove all the entries in the database by clicking on the "Remove All" button in the header of the application, and you can add a 100 randomly generated entries by clicking on the "Seed 100" button.
+
+## Possible improvements
+
+This project was developed in 8 hours, so there are some things that could be improved before being a production ready application.
+If the company finally adopts a tool like this, there are some improvements that could be done:
+
+- [ ] Add authentication, both for access and for API usage.
+- [ ] Update the database to a realtime database provider, that way the company can watch live how the sales evolve.
