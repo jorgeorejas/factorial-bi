@@ -93,3 +93,4 @@ If the company finally adopts a tool like this, there are some improvements that
 
 - [ ] Add authentication, both for access and for API usage.
 - [ ] Update the database to a realtime database provider, that way the company can watch live how the sales evolve.
+- [ ] After the improvements in the routing system presented at the NextJS Conf (25th of October), the layout would be much more easier to implement and yet faster
